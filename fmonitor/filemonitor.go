@@ -72,6 +72,7 @@ func (f *filemonitor) process() {
 		case ev := <-f.watcher.Event:
 			log.Println("event ocurred", ev)
 			if ev.IsCreate() || ev.IsModify() || ev.IsRename() || ev.IsDelete() {
+				log.Println("will resolve", ev.Name, "into absolute path")
 				absEvPath, err := filepath.Abs(ev.Name)
 				if err != nil {
 					log.Println("could not find absolute path for path", ev.Name)
