@@ -32,11 +32,6 @@ func main() {
             log.Println(err, "\n")
             continue
         }
-        log.Println("dirs in artifact", a, "are", a.Files())
-        log.Println("name", a.Name())
-        log.Println("bulidCmd", a.BuildCmd())
-        log.Println("targetFile", a.Target())
-        
         fm.AddArtifact(a)
         gs.AddArtifact(a)
     }

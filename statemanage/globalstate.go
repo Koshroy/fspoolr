@@ -91,8 +91,8 @@ func (g* globalState) insertArtifact(ar spoolr.Artifact) {
 	g.resources = append(g.resources, ar.Name())
 	g.resourceMap[ar.Name()] = NewResource(ar.Target().File, ar.Target().MimeType)
 	g.pathMap[ar.Name()] = path.Join(ar.RootDir(), "package.json")
-	log.Println("ar.Files()", ar.Files())
 	for _, elem := range ar.Files() {
+		log.Println("adding file", elem, "to buildMap entry")
 		g.buildMap[elem] = ar.BuildCmd()
 	}
 }
