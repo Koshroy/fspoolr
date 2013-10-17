@@ -7,6 +7,8 @@ import (
 
 type settings struct {
 	Dirs []string `dirs`
+	AppRoot string `app_root`
+	Port int `port`
 }
 
 func NewSettings(filePath string) (*settings, error) {

@@ -33,6 +33,13 @@ func NewJsonArtifact(root string) (*jsonartifact, error) {
     }
     j.rootDir = root
     j.absFilesJson = j.absFiles()
+
+    absTargetFile, err := filepath.Abs(path.Join(j.rootDir, j.TargetJson.File))
+    if err != nil {
+        return nil, err
+    }
+    j.TargetJson.File = absTargetFile
+    
     return j, nil
 }
 

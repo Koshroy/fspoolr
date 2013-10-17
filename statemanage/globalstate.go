@@ -62,11 +62,13 @@ func (g* globalState) processRequests() {
 		if g.shutdown {
 			break
 		}
-		_, ok := <-g.reqChan
+		req := <-g.reqChan
+		res, ok := g.resourceMap[req]
 		if !ok {
-			log.Fatalln("could not read from requests channel")
-			break
+			log.Println("could not find resource named", req)
+			continue
 		}
+		g.resChan<- res
 	}
 }
 

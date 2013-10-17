@@ -26,6 +26,7 @@ func NewFilemonitor() (*filemonitor, error) {
 }
 
 func (f *filemonitor) AddArtifact(a spoolr.Artifact) {
+	log.Println("adding artifact", a)
 	if _, ok := f.artifactSet[a]; !ok {
 		f.artifactSet[a] = true
 		if f.started {
